@@ -65,10 +65,10 @@ End Function
 Public Function GetValue(ByRef key As Variant) As Variant
     Dim node As cls_trie
     Set node = GetNode(key)
-    If (TypeName(node.Value) = "Nothing") Then
+    If (TypeName(node.tValue) = "Nothing") Then
         GetValue = ""
     Else
-        GetValue = node.Value
+        GetValue = node.tValue
     End If
 End Function
 
