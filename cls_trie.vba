@@ -59,16 +59,19 @@ Public Function GetNode(ByRef key As Variant) As cls_trie
 End Function
 
 '''
-'Following function will get the value for a given key
-'Creating the key if necessary
+'Following function will check if key exists and will retrieve its node value or empty string
 '''
 Public Function GetValue(ByRef key As Variant) As Variant
     Dim node As cls_trie
-    Set node = GetNode(key)
-    If (TypeName(node.tValue) = "Nothing") Then
-        GetValue = ""
+    If (Exists(key)) Then
+        Set node = GetNode(key)
+        If (TypeName(node.tValue) = "Nothing") Then
+            GetValue = ""
+        Else
+            GetValue = node.tValue
+        End If
     Else
-        GetValue = node.tValue
+        GetValue = ""
     End If
 End Function
 
